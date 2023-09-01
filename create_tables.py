@@ -1,7 +1,7 @@
 import configparser
 import psycopg2
 from sql_queries import create_table_queries, drop_table_queries
-import logging
+from logger_cfg import setup_logger
 import os
 
 def drop_tables(cur, conn):
@@ -18,6 +18,8 @@ def create_tables(cur, conn):
 
 def main():
 
+    # Set up logger
+    logger = setup_logger(os.path.basename(__file__))
     # Read config file
     dwh_cfg = configparser.ConfigParser()
     dwh_cfg.read('dwh.cfg')
@@ -30,9 +32,13 @@ def main():
     )
     cur = conn.cursor()
 
+    logger.info('Dropping tables if they exist')
     drop_tables(cur, conn)
-    create_tables(cur, conn)
+    logger.info('Dropping tables if they exist - success!')
 
+    logger.info('Creating tables...')
+    create_tables(cur, conn)
+    logger.info('Creating tables - success!')
     conn.close()
 
 

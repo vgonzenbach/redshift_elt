@@ -2,19 +2,11 @@
 import boto3
 from configparser import ConfigParser
 from aws_credentials import get_aws_credentials
-import logging
+from logger_cfg import setup_logger
 import json
-import os
 
 # Set up logging
-logger = logging.getLogger(os.path.basename(__file__)) # name of the logger
-logger.setLevel(logging.INFO) # log all levels
-
-formatter = logging.Formatter('[%(asctime)s][%(name)s][%(levelname)s] %(message)s') # format messages
-
-file_handler = logging.FileHandler('dwh.log') # log all to one file
-file_handler.setFormatter(formatter)
-logger.addHandler(file_handler)
+logger = setup_logger(__file__) # name of the logger
 
 # Read configuration file and get aws credentials
 dwh_cfg = ConfigParser()
