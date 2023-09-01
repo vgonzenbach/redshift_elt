@@ -70,7 +70,7 @@ with open('dwh.cfg', 'w') as configfile:
 logger.info('Writing role ARN to config file - success!')
 
 # Create cluster
-logging.info('Creating Redshift Cluster')
+logger.info('Creating Redshift Cluster')
 try:
     redshift.create_cluster(        
         # Hardware params
@@ -85,7 +85,7 @@ try:
         IamRoles=[dwh_cfg['IAM_ROLE']['ARN']]
     )
 
-    logging.info('Creating Redshift Cluster - success!')
+    logger.info('Creating Redshift Cluster - success!')
 except Exception as e:
     if e.response['Error']['Code'] == 'ClusterAlreadyExists':
         logger.debug(e.response['Error']['Message'])
@@ -93,7 +93,7 @@ except Exception as e:
     else: 
         logger.error(e)
     
-logging.info('Waiting for cluster to be available...')
+logger.info('Waiting for cluster to be available...')
 redshift_available_waiter = redshift.get_waiter('cluster_available')
 redshift_available_waiter.wait(ClusterIdentifier=dwh_cfg['CLUSTER']['CLUSTER_IDENTIFIER'])
 

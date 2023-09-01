@@ -28,7 +28,7 @@ def main():
         dwh_cfg['CLUSTER']['DB_NAME'],
         dwh_cfg['CLUSTER']['DB_USER'],
         dwh_cfg['CLUSTER']['DB_PASSWORD'],
-        dwh_cfg['CLUSTER']['DB_PORT'])
+        dwh_cfg['CLUSTER']['PORT'])
     )
     cur = conn.cursor()
 
