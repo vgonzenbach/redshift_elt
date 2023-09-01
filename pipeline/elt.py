@@ -1,3 +1,4 @@
+"""The main ELT pipeline to load S3 data into staging tables and then transform to a star schema"""
 from configparser import ConfigParser
 import psycopg2
 from sql_queries import copy_table_queries, insert_table_queries
