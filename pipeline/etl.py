@@ -1,7 +1,7 @@
 from configparser import ConfigParser
 import psycopg2
 from sql_queries import copy_table_queries, insert_table_queries
-from logger_cfg import setup_logger
+from helpers.logger_cfg import setup_logger
 
 def load_staging_tables(cur, conn):
     for query in copy_table_queries:

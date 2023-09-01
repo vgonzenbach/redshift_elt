@@ -1,8 +1,8 @@
 """Sets up a redshift cluster if specified in the configuration does not exist"""
 import boto3
 from configparser import ConfigParser
-from aws_credentials import get_aws_credentials
-from logger_cfg import setup_logger
+from helpers.aws_credentials import get_aws_credentials
+from helpers.logger_cfg import setup_logger
 import json
 
 # Set up logging

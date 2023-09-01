@@ -1,7 +1,7 @@
 import configparser
 import psycopg2
 from sql_queries import create_table_queries, drop_table_queries
-from logger_cfg import setup_logger
+from helpers.logger_cfg import setup_logger
 import os
 
 def drop_tables(cur, conn):
