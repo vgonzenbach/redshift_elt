@@ -6,12 +6,14 @@ from helpers.logger_cfg import setup_logger
 import os
 
 def drop_tables(cur, conn):
+    """Drop tables from database"""
     for query in drop_table_queries:
         cur.execute(query)
         conn.commit()
 
 
 def create_tables(cur, conn):
+    """Create tables prior to Loading and Transformation"""
     for query in create_table_queries:
         cur.execute(query)
         conn.commit()

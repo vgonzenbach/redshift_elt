@@ -5,12 +5,14 @@ from sql_queries import copy_table_queries, insert_table_queries
 from helpers.logger_cfg import setup_logger
 
 def load_staging_tables(cur, conn):
+    """Runs all queries that load data from S3 into staging tables"""
     for query in copy_table_queries:
         cur.execute(query)
         conn.commit()
 
 
 def insert_tables(cur, conn):
+     """Runs all queries that transform data from staging tables into analytical tables"""
     for query in insert_table_queries:
         cur.execute(query)
         conn.commit()
